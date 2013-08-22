@@ -1,43 +1,44 @@
-# &lt;my-element&gt;
+# &lt;tracking&gt;
 
-TODO: Write a project description
+Web Component wrapper for [getUserMedia API](http://dev.w3.org/2011/webrtc/editor/getusermedia.html) using Polymer.
 
-> Maintained by [Your Name](https://github.com/yourname).
+> Maintained by [Eduardo Lundgren](https://github.com/eduardolundgren).
 
 ## Demo
 
-![My Element]()
+![Camera Element](http://f.cl.ly/items/410f1q0C363n2o2C3f1m/screenshot-tracking.gif)
 
-> [Check it live](http://customelements.github.io/boilerplate-element).
+> [Check it live](http://eduardolundgren.github.io/tracking-element).
 
 ## Usage
 
 1. Import Web Components' polyfill:
 
-	```html
-	<script src="lib/polymer.min.js"></script>
-	```
+    ```html
+    <script src="lib/polymer.min.js"></script>
+    ```
 
 2. Import Custom Element:
 
-	```html
-	<link rel="import" href="src/my-element.html">
-	```
+    ```html
+    <link rel="import" href="src/tracking.html">
+    ```
 
 3. Start using it!
 
-	```html
-	<my-element></my-element>
-	```
+    ```html
+    <video is="tracking"></video>
+    ```
 
 ## Options
 
-Attribute  | Options                   | Default             | Description
----        | ---                       | ---                 | ---
-`foo`      | *string*                  | `bar`               | Lorem ipsum
-`bar`      | `abc`, `def`, `ghi` 	   | `foo`               | Lorem ipsum
-`height`   | *int*                     | `100`               | Lorem ipsum
+Attribute  | Options                        | Default        | Description
+---        | ---                            | ---            | ---
+`type`     | `human`, `color`               | `human`        | Type of the video tracking
+`part`     | `frontal_face`, `eye`, `mouth` | `frontal_face` | Human body part to track
+`color`    | `magenta`, `cyan`, `magenta`   | None           | Color to track
 
+> See [getUserMedia API spec](http://dev.w3.org/2011/webrtc/editor/getusermedia.html).
 
 ## Contributing
 
@@ -49,8 +50,10 @@ Attribute  | Options                   | Default             | Description
 
 ## History
 
+* [v0.1.0](https://github.com/eduardolundgren/tracking-element/releases/tag/0.1.0) August 22, 2013
+    * Initial development release
 * v0.0.1 August 19, 2013
-	* Started project using [boilerplate-element](https://github.com/customelements/boilerplate-element)
+    * Started project using [boilerplate-element](https://github.com/customelements/boilerplate-element)
 
 ## License
 
