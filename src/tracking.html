@@ -6,29 +6,27 @@
 <script src="../lib/tracking.js/tracker/human/data/mouth.min.js"></script>
 
 <polymer-element name="tracking" extends="video" attributes="color part type">
-<script>
-    Polymer('tracking', {
-        type: 'human',
+    <script>
+        Polymer('tracking', {
+            type: 'human',
+            color: 'magenta',
+            part: 'frontal_face',
 
-        color: 'magenta',
+            created: function() {
+                var video = this,
+                    videoCamera = new tracking.VideoCamera();
 
-        part: 'frontal_face',
+                videoCamera.domElement = video;
+                videoCamera.render();
 
-        created: function() {
-            var video = this,
-                videoCamera = new tracking.VideoCamera();
-
-            videoCamera.domElement = video;
-            videoCamera.render();
-
-            videoCamera.track({
-                color: this.color,
-                data: this.part,
-                type: this.type,
-                onFound: this.onFound
-            });
-        },
-        onFound: function() {}
-    });
-</script>
+                videoCamera.track({
+                    color: this.color,
+                    data: this.part,
+                    type: this.type,
+                    onFound: this.onFound
+                });
+            },
+            onFound: function() {}
+        });
+    </script>
 </polymer-element>
