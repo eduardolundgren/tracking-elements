@@ -1,0 +1,22 @@
+{
+  "name": "tracking-elements",
+  "version": "1.0.0",
+  "description": "Web Component wrapper for tracking.js API using Polymer.",
+  "license": "BSD",
+  "keywords": [
+    "polymer",
+    "tracking",
+    "trackingjs",
+    "web-components",
+    "webrtc"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.3",
+    "tracking.js": "eduardolundgren/tracking.js#master"
+  }
+}

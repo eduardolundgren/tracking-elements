@@ -1,42 +1,92 @@
-# &lt;tracking&gt;
+# &lt;tracking-elements&gt;
 
-Web Component wrapper for [getUserMedia API](http://dev.w3.org/2011/webrtc/editor/getusermedia.html) using Polymer.
+> My awesome Custom Element
 
 ## Demo
 
-![Camera Element](http://f.cl.ly/items/410f1q0C363n2o2C3f1m/screenshot-tracking.gif)
+[Check it live!](http://eduardolundgren.github.io/tracking-elements)
 
-> [Check it live](http://eduardolundgren.github.io/video-tracking-element).
+## Install
+
+Install the component using [Bower](http://bower.io/):
+
+```sh
+$ bower install tracking-elements --save
+```
+
+Or [download as ZIP](https://github.com/eduardolundgren/tracking-elements/archive/master.zip).
 
 ## Usage
 
 1. Import Web Components' polyfill:
 
     ```html
-    <script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.0.20130816/polymer.min.js"></script>
+    <script src="bower_components/platform/platform.js"></script>
     ```
 
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="src/tracking.html">
+    <link rel="import" href="bower_components/tracking-elements/dist/image-color-tracking.html">
     ```
 
 3. Start using it!
 
     ```html
-    <video is="tracking"></video>
+    <image-color-tracking></image-color-tracking>
     ```
 
 ## Options
 
-Attribute  | Options                        | Default        | Description
----        | ---                            | ---            | ---
-`type`     | `human`, `color`               | `human`        | Type of the video tracking
-`part`     | `frontal_face`, `eye`, `mouth` | `frontal_face` | Human body part to track
-`color`    | `magenta`, `cyan`, `magenta`   | None           | Color to track
+Attribute     | Options     | Default      | Description
+---           | ---         | ---          | ---
+`foo`         | *string*    | `bar`        | Lorem ipsum dolor.
 
-> See [getUserMedia API spec](http://dev.w3.org/2011/webrtc/editor/getusermedia.html).
+## Methods
+
+Method        | Parameters   | Returns     | Description
+---           | ---          | ---         | ---
+`unicorn()`   | None.        | Nothing.    | Magic stuff appears.
+
+## Events
+
+Event         | Description
+---           | ---
+`onsomething` | Triggers when something happens.
+
+## Development
+
+In order to run it locally you'll need to fetch some dependencies and a basic server setup.
+
+* Install [Bower](http://bower.io/) & [Grunt](http://gruntjs.com/):
+
+    ```sh
+    $ [sudo] npm install -g bower grunt-cli
+    ```
+
+* Install local dependencies:
+
+    ```sh
+    $ bower install && npm install
+    ```
+
+* To test your project, start the development server and open `http://localhost:8000`.
+
+    ```sh
+    $ grunt server
+    ```
+
+* To build the distribution files before releasing a new version.
+
+    ```sh
+    $ grunt build
+    ```
+
+* To provide a live demo, send everything to `gh-pages` branch.
+
+    ```sh
+    $ grunt deploy
+    ```
 
 ## Contributing
 
@@ -48,12 +98,7 @@ Attribute  | Options                        | Default        | Description
 
 ## History
 
-* [v0.1.1](https://github.com/eduardolundgren/video-tracking-element/releases/tag/0.1.1) September 18, 2013
-	* Rename element from `<tracking>` to `<video-tracking>`
-* [v0.1.0](https://github.com/eduardolundgren/video-tracking-element/releases/tag/0.1.0) August 22, 2013
-    * Initial development release
-* v0.0.1 August 19, 2013
-    * Started project using [boilerplate-element](https://github.com/customelements/boilerplate-element)
+For detailed changelog, check [Releases](https://github.com/eduardolundgren/tracking-elements/releases).
 
 ## License
 

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>&lt;tracking-elements&gt;</title>
+
+  <!-- Importing Web Component's Polyfill -->
+  <script src="../bower_components/platform/platform.js"></script>
+
+  <!-- Importing Custom Elements -->
+  <link rel="import" href="../src/image-color-tracking.html">
+  <link rel="import" href="../src/canvas-color-tracking.html">
+  <link rel="import" href="../src/video-color-tracking.html">
+</head>
+<body>
+  <h1>ColorTracker</h1>
+
+
+  <p>An example of using <code>&lt;image-color-tracking-element&gt;</code>:</p>
+
+  <!-- Using Custom Elements -->
+  <img is="image-color-tracking" target="magenta yellow cyan" src="assets/psmove.png" />
+
+  <script>
+    var img = document.querySelector('img');
+
+    img.addEventListener('track', function(event) {
+      event.detail.data.forEach(function(rect) {
+        plotRectangle(img, rect);
+      });
+    });
+  </script>
+
+
+  <p>An example of using <code>&lt;canvas-color-tracking-element&gt;</code>:</p>
+
+  <!-- Using Custom Elements -->
+  <canvas is="canvas-color-tracking" target="magenta yellow cyan"></canvas>
+
+  <script>
+    var canvas = document.querySelector('canvas');
+
+    canvas.addEventListener('track', function(event) {
+      event.detail.data.forEach(function(rect) {
+        plotRectangle(canvas, rect);
+      });
+    });
+
+    window.addEventListener('polymer-ready', function(event) {
+      // Waits the image to be loaded nto the canvas.
+      tracking.Canvas.loadImage(canvas, 'assets/psmove.png', 0, 0, 552, 386, function() {
+        canvas.trackerTask.stop().run();
+      });
+    });
+  </script>
+
+
+  <p>An example of using <code>&lt;video-color-tracking-element&gt;</code>:</p>
+
+  <!-- Using Custom Elements -->
+  <video is="video-color-tracking" target="magenta yellow cyan" camera="true" width="480" height="320" autoplay><video>
+
+  <script>
+    var debug;
+    var video = document.querySelector('video');
+
+    video.addEventListener('track', function(event) {
+      event.detail.data.forEach(function(rect) {
+        debug = plotRectangle(video, rect, debug);
+      });
+    });
+  </script>
+
+
+  <!-- Private Helpers -->
+  <script>
+    function plotRectangle(el, rect, opt_div) {
+      var div = opt_div || document.createElement('div');
+      div.style.position = 'absolute';
+      div.style.border = '2px solid ' + (rect.color || 'magenta');
+      div.style.width = rect.width + 'px';
+      div.style.height = rect.height + 'px';
+      div.style.left = el.offsetLeft + rect.x + 'px';
+      div.style.top = el.offsetTop + rect.y + 'px';
+      document.body.appendChild(div);
+      return div;
+    }
+  </script>
+
+</body>
+</html>

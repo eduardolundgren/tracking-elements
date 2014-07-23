@@ -1,0 +1,20 @@
+<!-- Import Polymer -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Import tracking.js -->
+<script src="../bower_components/tracking.js/build/tracking-min.js"></script>
+<script src="../bower_components/tracking.js/build/data/face-min.js"></script>
+<script src="../bower_components/tracking.js/build/data/eye-min.js"></script>
+<script src="../bower_components/tracking.js/build/data/mouth-min.js"></script>
+
+<script src="utils.js"></script>
+
+<!-- Define your custom element -->
+<polymer-element name="video-object-tracking" extends="video" attributes="camera target">
+
+  <script>
+    // Defines Polymer element
+    Polymer('video-object-tracking', makeObjectTrackerMixin());
+  </script>
+
+</polymer-element>
