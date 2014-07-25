@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>tracking.js - color with camera</title>
+
+  <meta charset="utf-8">
+
+  <script src="../build/tracking.js"></script>
+
+  <style>
+  .rect {
+    height: 80px;
+    left: -1000px;
+    position: absolute;
+    top: -1000px;
+    width: 120px;
+  }
+  </style>
+</head>
+<body>
+  <video id="video" width="640" height="480" preload autoplay loop muted controls></video>
+  <canvas id="canvas" width="640" height="480"></canvas>
+
+  <script>
+    window.onload = function() {
+      var video = document.getElementById('video');
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+
+      var tracker = new tracking.ColorTracker(['magenta', 'cyan', 'yellow']);
+
+      tracking.track('#video', tracker, { camera: true });
+
+      tracker.on('track', function(event) {
+        context.drawImage(video, 0, 0, 640, 480);
+        event.data.forEach(function(rect) {
+          context.strokeStyle = rect.color;
+          context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+        });
+      });
+    };
+  </script>
+
+</body>
+</html>

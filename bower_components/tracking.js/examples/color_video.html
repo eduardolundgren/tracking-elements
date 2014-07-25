@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>tracking.js - hello world</title>
+
+  <meta charset="utf-8">
+
+  <script src="../build/tracking.js"></script>
+
+  <style>
+  #rectangle {
+    height: 80px;
+    left: -1000px;
+    position: absolute;
+    top: -1000px;
+    width: 120px;
+  }
+  </style>
+</head>
+<body>
+  <div id="rectangle"></div>
+  <video id="video" width="640" height="360" preload autoplay loop muted controls>
+    <source src="assets/color.mp4"  type="video/mp4">
+    <source src="assets/color.webm" type="video/webm">
+  </video>
+
+  <script>
+    window.onload = function() {
+      var rectangle = document.getElementById('rectangle');
+      var video = document.getElementById('video');
+
+      var tracker = new tracking.ColorTracker();
+      tracker.setMinDimension(5);
+
+      tracking.track('#video', tracker);
+
+      tracker.on('track', function(event) {
+        if (event.data.length === 0) {
+          rectangle.style.top = '-1000px';
+          return;
+        }
+        event.data.forEach(function(rect) {
+          rectangle.style.border = '2px solid ' + rect.color;
+          rectangle.style.width = rect.width + 'px';
+          rectangle.style.height = rect.height + 'px';
+          rectangle.style.left = (video.offsetLeft + rect.x) + 'px';
+          rectangle.style.top = (video.offsetTop + rect.y) + 'px';
+        });
+      });
+    };
+  </script>
+
+</body>
+</html>

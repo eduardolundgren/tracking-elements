@@ -1,0 +1,17 @@
+<!-- Import Polymer -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Import tracking.js -->
+<script src="../bower_components/tracking.js/build/tracking-min.js"></script>
+
+<script src="utils.js"></script>
+
+<!-- Define your custom element -->
+<polymer-element name="image-color-tracking" extends="img" attributes="target">
+
+  <script>
+    // Defines Polymer element
+    Polymer('image-color-tracking', makeColorTrackerMixin());
+  </script>
+
+</polymer-element>
