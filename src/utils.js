@@ -8,6 +8,10 @@ function importBasicLifecycleMixin(mixin, Tracker) {
 
   // Fires when the element was inserted into the document
   mixin.attached = function() {
+    this.run();
+  };
+
+  mixin.run = function() {
     if (this.trackerTask) {
       this.trackerTask.run();
     }
@@ -15,6 +19,10 @@ function importBasicLifecycleMixin(mixin, Tracker) {
 
   // Fires when the element was removed from the document
   mixin.detached = function() {
+    this.stop();
+  };
+
+  mixin.stop = function() {
     if (this.trackerTask) {
       this.trackerTask.stop();
     }
