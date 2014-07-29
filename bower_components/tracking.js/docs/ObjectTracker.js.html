@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: trackers/ObjectTracker.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: trackers/ObjectTracker.js</h1>
+
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function() {
+  /**
+   * ObjectTracker utility.
+   * @constructor
+   * @param {string|Array.&lt;string|Array.&lt;number>>} opt_classifiers Optional
+   *     object classifiers to track.
+   * @extends {tracking.Tracker}
+   */
+  tracking.ObjectTracker = function(opt_classifiers) {
+    tracking.ObjectTracker.base(this, 'constructor');
+
+    if (opt_classifiers) {
+      if (!Array.isArray(opt_classifiers)) {
+        opt_classifiers = [opt_classifiers];
+      }
+
+      if (Array.isArray(opt_classifiers)) {
+        opt_classifiers.forEach(function(classifier, i) {
+          if (typeof classifier === 'string') {
+            opt_classifiers[i] = tracking.ViolaJones.classifiers[classifier];
+          }
+          if (!opt_classifiers[i]) {
+            throw new Error('Object classifier not valid, try `new tracking.ObjectTracker("face")`.');
+          }
+        });
+      }
+    }
+
+    this.setClassifiers(opt_classifiers);
+  };
+
+  tracking.inherits(tracking.ObjectTracker, tracking.Tracker);
+
+  /**
+   * Specifies the edges density of a block in order to decide whether to skip
+   * it or not.
+   * @default 0.2
+   * @type {number}
+   */
+  tracking.ObjectTracker.prototype.edgesDensity = 0.2;
+
+  /**
+   * Specifies the initial scale to start the feature block scaling.
+   * @default 1.0
+   * @type {number}
+   */
+  tracking.ObjectTracker.prototype.initialScale = 1.0;
+
+  /**
+   * Specifies the scale factor to scale the feature block.
+   * @default 1.25
+   * @type {number}
+   */
+  tracking.ObjectTracker.prototype.scaleFactor = 1.25;
+
+  /**
+   * Specifies the block step size.
+   * @default 1.5
+   * @type {number}
+   */
+  tracking.ObjectTracker.prototype.stepSize = 1.5;
+
+  /**
+   * Gets the tracker HAAR classifiers.
+   * @return {TypedArray.&lt;number>}
+   */
+  tracking.ObjectTracker.prototype.getClassifiers = function() {
+    return this.classifiers;
+  };
+
+  /**
+   * Gets the edges density value.
+   * @return {number}
+   */
+  tracking.ObjectTracker.prototype.getEdgesDensity = function() {
+    return this.edgesDensity;
+  };
+
+  /**
+   * Gets the initial scale to start the feature block scaling.
+   * @return {number}
+   */
+  tracking.ObjectTracker.prototype.getInitialScale = function() {
+    return this.initialScale;
+  };
+
+  /**
+   * Gets the scale factor to scale the feature block.
+   * @return {number}
+   */
+  tracking.ObjectTracker.prototype.getScaleFactor = function() {
+    return this.scaleFactor;
+  };
+
+  /**
+   * Gets the block step size.
+   * @return {number}
+   */
+  tracking.ObjectTracker.prototype.getStepSize = function() {
+    return this.stepSize;
+  };
+
+  /**
+   * Tracks the `Video` frames. This method is called for each video frame in
+   * order to emit `track` event.
+   * @param {Uint8ClampedArray} pixels The pixels data to track.
+   * @param {number} width The pixels canvas width.
+   * @param {number} height The pixels canvas height.
+   */
+  tracking.ObjectTracker.prototype.track = function(pixels, width, height) {
+    var self = this;
+    var classifiers = this.getClassifiers();
+
+    if (!classifiers) {
+      throw new Error('Object classifier not specified, try `new tracking.ObjectTracker("face")`.');
+    }
+
+    var results = [];
+
+    classifiers.forEach(function(classifier) {
+      results = results.concat(tracking.ViolaJones.detect(pixels, width, height, self.getInitialScale(), self.getScaleFactor(), self.getStepSize(), self.getEdgesDensity(), classifier));
+    });
+
+    this.emit('track', {
+      data: results
+    });
+  };
+
+  /**
+   * Sets the tracker HAAR classifiers.
+   * @param {TypedArray.&lt;number>} classifiers
+   */
+  tracking.ObjectTracker.prototype.setClassifiers = function(classifiers) {
+    this.classifiers = classifiers;
+  };
+
+  /**
+   * Sets the edges density.
+   * @param {number} edgesDensity
+   */
+  tracking.ObjectTracker.prototype.setEdgesDensity = function(edgesDensity) {
+    this.edgesDensity = edgesDensity;
+  };
+
+  /**
+   * Sets the initial scale to start the block scaling.
+   * @param {number} initialScale
+   */
+  tracking.ObjectTracker.prototype.setInitialScale = function(initialScale) {
+    this.initialScale = initialScale;
+  };
+
+  /**
+   * Sets the scale factor to scale the feature block.
+   * @param {number} scaleFactor
+   */
+  tracking.ObjectTracker.prototype.setScaleFactor = function(scaleFactor) {
+    this.scaleFactor = scaleFactor;
+  };
+
+  /**
+   * Sets the block step size.
+   * @param {number} stepSize
+   */
+  tracking.ObjectTracker.prototype.setStepSize = function(stepSize) {
+    this.stepSize = stepSize;
+  };
+
+}());
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="tracking.Brief.html">Brief</a></li><li><a href="tracking.Canvas.html">Canvas</a></li><li><a href="tracking.ColorTracker.html">ColorTracker</a></li><li><a href="tracking.DisjointSet.html">DisjointSet</a></li><li><a href="tracking.EPnP.html">EPnP</a></li><li><a href="tracking.EventEmitter.html">EventEmitter</a></li><li><a href="tracking.Fast.html">Fast</a></li><li><a href="tracking.Image.html">Image</a></li><li><a href="tracking.Math.html">Math</a></li><li><a href="tracking.Matrix.html">Matrix</a></li><li><a href="tracking.ObjectTracker.html">ObjectTracker</a></li><li><a href="tracking.Tracker.html">Tracker</a></li><li><a href="tracking.TrackerTask.html">TrackerTask</a></li><li><a href="tracking.ViolaJones.html">ViolaJones</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Fri Jul 25 2014 14:48:20 GMT-0300 (BRT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

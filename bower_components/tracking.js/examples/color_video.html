@@ -1,53 +1,79 @@
 <!doctype html>
 <html>
 <head>
-
-  <title>tracking.js - hello world</title>
-
   <meta charset="utf-8">
+  <title>tracking.js - color with video</title>
+  <link rel="stylesheet" href="assets/demo.css">
 
-  <script src="../build/tracking.js"></script>
+  <script src="../build/tracking-min.js"></script>
+  <script src="../../dat-gui/build/dat.gui.min.js"></script>
+  <script src="assets/stats.min.js"></script>
+  <script src="assets/color_camera_gui.js"></script>
 
   <style>
-  #rectangle {
-    height: 80px;
-    left: -1000px;
+  .demo-container {
+    background-color: black;
+  }
+
+  video, canvas {
     position: absolute;
-    top: -1000px;
-    width: 120px;
   }
   </style>
 </head>
 <body>
-  <div id="rectangle"></div>
-  <video id="video" width="640" height="360" preload autoplay loop muted controls>
-    <source src="assets/color.mp4"  type="video/mp4">
-    <source src="assets/color.webm" type="video/webm">
-  </video>
+  <div class="demo-title">
+    <p><a href="http://trackingjs.com">tracking.js</a> － detect certain colors in a video</p>
+  </div>
+
+  <div class="demo-frame">
+    <div class="demo-container">
+      <div id="rectangle"></div>
+      <video id="video" width="800" height="530" preload autoplay loop muted controls>
+        <source src="assets/minions.mp4"  type="video/mp4">
+      </video>
+      <canvas id="canvas" width="800" height="500"></canvas>
+    </div>
+  </div>
 
   <script>
     window.onload = function() {
-      var rectangle = document.getElementById('rectangle');
-      var video = document.getElementById('video');
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
 
-      var tracker = new tracking.ColorTracker();
+      tracking.ColorTracker.registerColor('purple', function(r, g, b) {
+        var dx = r - 120;
+        var dy = g - 60;
+        var dz = b - 210;
+
+        if ((b - g) >= 100 && (r - g) >= 60) {
+          return true;
+        }
+        return dx * dx + dy * dy + dz * dz < 3500;
+      });
+
+      var tracker = new tracking.ColorTracker(['yellow', 'purple']);
       tracker.setMinDimension(5);
 
       tracking.track('#video', tracker);
 
       tracker.on('track', function(event) {
-        if (event.data.length === 0) {
-          rectangle.style.top = '-1000px';
-          return;
-        }
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
         event.data.forEach(function(rect) {
-          rectangle.style.border = '2px solid ' + rect.color;
-          rectangle.style.width = rect.width + 'px';
-          rectangle.style.height = rect.height + 'px';
-          rectangle.style.left = (video.offsetLeft + rect.x) + 'px';
-          rectangle.style.top = (video.offsetTop + rect.y) + 'px';
+          if (rect.color === 'custom') {
+            rect.color = tracker.customColor;
+          }
+
+          context.strokeStyle = rect.color;
+          context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+          context.font = '11px Helvetica';
+          context.fillStyle = "#fff";
+          context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
+          context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
         });
       });
+
+      initGUIControllers(tracker);
     };
   </script>
 

@@ -1,0 +1,15 @@
+[
+  {
+    "name": "",
+    "kind": "package",
+    "longname": "package:",
+    "description": "",
+    "version": "",
+    "licenses": [],
+    "tags": {
+      "allowUnknownTags": true
+    },
+    "plugins": false,
+    "files": []
+  }
+]

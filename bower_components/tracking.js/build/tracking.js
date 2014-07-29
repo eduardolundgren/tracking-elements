@@ -1,5 +1,5 @@
 /**
- * tracking.js - Augmented Reality JavaScript Framework.
+ * tracking.js - A modern approach for Computer Vision on the web.
  * @author Eduardo Lundgren <edu@rdo.io>
  * @version v1.0.0
  * @link http://trackingjs.com
@@ -1374,7 +1374,7 @@
    * @default 40
    * @static
    */
-  tracking.Fast.FAST_THRESHOLD = 40;
+  tracking.Fast.THRESHOLD = 40;
 
   /**
    * Caches coordinates values of the circle surounding the pixel candidate p.
@@ -1401,7 +1401,7 @@
     var corners = [];
 
     if (opt_threshold === undefined) {
-      opt_threshold = this.FAST_THRESHOLD;
+      opt_threshold = this.THRESHOLD;
     }
 
     // When looping through the image pixels, skips the first three lines from

@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: Brief</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: Brief</h1>
+
+    
+
+
+
+<section>
+
+<header>
+    <h2>
+    Brief
+    </h2>
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+
+    
+        
+<dt>
+    <h4 class="name" id="Brief"><span class="type-signature"></span>new Brief<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Brief intends for "Binary Robust Independent Elementary Features".This
+method generates a binary string for each keypoint found by an extractor
+method.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Brief.js.html">features/Brief.js</a>, <a href="Brief.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="N"><span class="type-signature">&lt;static> </span>N<span class="type-signature"> :number</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The set of binary tests is defined by the nd (x,y)-location pairs
+uniquely chosen during the initialization. Values could vary between N =
+128,256,512. N=128 yield good compromises between speed, storage
+efficiency, and recognition rate.
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Brief.js.html">features/Brief.js</a>, <a href="Brief.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="getDescriptors"><span class="type-signature">&lt;static> </span>getDescriptors<span class="signature">(The, width, keypoints)</span><span class="type-signature"> &rarr; {Int32Array}</span></h4>
+
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Generates a brinary string for each found keypoints extracted using an
+extractor method.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>The</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">grayscale pixels in a linear [p1,p2,...] array.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The image width.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>keypoints</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Brief.js.html">features/Brief.js</a>, <a href="Brief.js.html#line49">line 49</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Returns an array where for each four sequence int
+    values represent the descriptor binary string (128 bits) necessary
+    to describe the corner, e.g. [0,0,0,0, 0,0,0,0, ...].
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Int32Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="match"><span class="type-signature">&lt;static> </span>match<span class="signature">(keypoints1, descriptors1, keypoints2, descriptors2)</span><span class="type-signature"> &rarr; {Int32Array}</span></h4>
+
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Matches sets of features {mi} and {m′j} extracted from two images taken
+from similar, and often successive, viewpoints. A classical procedure
+runs as follows. For each point {mi} in the first image, search in a
+region of the second image around location {mi} for point {m′j}. The
+search is based on the similarity of the local image windows, also known
+as kernel windows, centered on the points, which strongly characterizes
+the points when the images are sufficiently close. Once each keypoint is
+described with its binary string, they need to be compared with the
+closest matching point. Distance metric is critical to the performance of
+in- trusion detection systems. Thus using binary strings reduces the size
+of the descriptor and provides an interesting data structure that is fast
+to operate whose similarity can be measured by the Hamming distance.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>keypoints1</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>descriptors1</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>keypoints2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>descriptors2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Brief.js.html">features/Brief.js</a>, <a href="Brief.js.html#line106">line 106</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Returns an array where the index is the corner1
+    index coordinate, and the value is the corresponding match index of
+    corner2, e.g. keypoints1=[x0,y0,x1,y1,...] and
+    keypoints2=[x'0,y'0,x'1,y'1,...], if x0 matches x'1 and x1 matches x'0,
+    the return array would be [3,0].
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Int32Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="reciprocalMatch"><span class="type-signature">&lt;static> </span>reciprocalMatch<span class="signature">(keypoints1, descriptors1, keypoints2, descriptors2)</span><span class="type-signature"> &rarr; {Int32Array}</span></h4>
+
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Removes matches outliers by testing matches on both directions.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>keypoints1</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>descriptors1</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>keypoints2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>descriptors2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Brief.js.html">features/Brief.js</a>, <a href="Brief.js.html#line151">line 151</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Returns an array where the index is the corner1
+    index coordinate, and the value is the corresponding match index of
+    corner2, e.g. keypoints1=[x0,y0,x1,y1,...] and
+    keypoints2=[x'0,y'0,x'1,y'1,...], if x0 matches x'1 and x1 matches x'0,
+    the return array would be [3,0].
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Int32Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="tracking.Brief.html">Brief</a></li><li><a href="tracking.Canvas.html">Canvas</a></li><li><a href="tracking.ColorTracker.html">ColorTracker</a></li><li><a href="tracking.DisjointSet.html">DisjointSet</a></li><li><a href="tracking.EPnP.html">EPnP</a></li><li><a href="tracking.EventEmitter.html">EventEmitter</a></li><li><a href="tracking.Fast.html">Fast</a></li><li><a href="tracking.Image.html">Image</a></li><li><a href="tracking.Math.html">Math</a></li><li><a href="tracking.Matrix.html">Matrix</a></li><li><a href="tracking.ObjectTracker.html">ObjectTracker</a></li><li><a href="tracking.Tracker.html">Tracker</a></li><li><a href="tracking.TrackerTask.html">TrackerTask</a></li><li><a href="tracking.ViolaJones.html">ViolaJones</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Fri Jul 25 2014 14:48:20 GMT-0300 (BRT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
