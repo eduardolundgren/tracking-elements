@@ -16,7 +16,7 @@ module.exports = function(grunt) {
             src: [
                 'bower_components/**/*',
                 '!bower_components/tracking-elements/**/*',
-                'examples/*', 'src/*', 'index.html'
+                'examples/**/*', 'src/*', 'index.html'
             ]
         },
         'replace': {
